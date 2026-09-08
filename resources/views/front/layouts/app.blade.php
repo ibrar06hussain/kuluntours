@@ -11,10 +11,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
-    <!-- Google Fonts: Syne & Plus Jakarta Sans for modern luxury mountaineering aesthetic -->
+    <!-- Google Fonts: Outfit, Montserrat & Plus Jakarta Sans for welcoming, modern tourism & adventure aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,8 @@
             --brand-gray: #64748B;
             --brand-border: #E2E8F0;
             
-            --font-heading: 'Syne', sans-serif;
+            --font-heading: 'Outfit', 'Montserrat', sans-serif;
+            --font-brand: 'Montserrat', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -57,7 +58,7 @@
             font-family: var(--font-heading);
             color: var(--brand-dark);
             font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         /* Top Notification Bar */
@@ -105,7 +106,7 @@
         }
 
         .navbar-brand-text {
-            font-family: var(--font-heading);
+            font-family: var(--font-brand);
             font-weight: 800;
             font-size: 1.3rem;
             line-height: 1.1;
