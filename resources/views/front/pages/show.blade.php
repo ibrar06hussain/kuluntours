@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Page Header -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <span class="section-tag">Kunlun Treks & Tours</span>
+        <span class="section-tag" style="color: var(--brand-gold-light);">Kunlun Treks & Tours</span>
         <h1 class="display-4 fw-bold font-heading text-white mb-2">{{ $page->title }}</h1>
     </div>
 </section>

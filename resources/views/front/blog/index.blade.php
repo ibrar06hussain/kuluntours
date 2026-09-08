@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Header -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <span class="section-tag">Journal & Stories</span>
+        <span class="section-tag" style="color: var(--brand-gold-light);">Journal & Stories</span>
         <h1 class="display-4 fw-bold font-heading text-white mb-2">Expedition Journal</h1>
         <p class="text-light opacity-75 max-w-700 mx-auto">Expert mountaineering insights, packing guides, and Karakoram stories from our team.</p>
     </div>

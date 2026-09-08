@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Header -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <span class="section-tag">Got Questions?</span>
+        <span class="section-tag" style="color: var(--brand-gold-light);">Got Questions?</span>
         <h1 class="display-4 fw-bold font-heading text-white mb-2">Frequently Asked Questions</h1>
         <p class="text-light opacity-75 max-w-700 mx-auto">Everything you need to know about traveling, trekking, and climbing in Northern Pakistan.</p>
     </div>
@@ -20,7 +20,7 @@
             <div class="col-lg-9">
                 @forelse($faqs as $categoryName => $faqList)
                     <div class="mb-5">
-                        <h4 class="fw-bold font-heading mb-3 text-primary border-bottom pb-2">
+                        <h4 class="fw-bold font-heading mb-3 border-bottom pb-2" style="color: var(--brand-red);">
                             <i class="fas fa-folder-open text-warning me-2"></i>{{ $categoryName }}
                         </h4>
                         <div class="accordion border rounded-4 overflow-hidden shadow-sm mb-4" id="accordion{{ Str::slug($categoryName) }}">

@@ -19,12 +19,13 @@
         :root {
             --sidebar-width: 270px;
             --topbar-height: 65px;
-            --primary: #0F2D3F;
-            --primary-dark: #071924;
-            --accent: #E8A317;
-            --accent-hover: #D49516;
-            --bg-body: #F4F6F9;
-            --text-muted-light: #718096;
+            --primary: #8A0B14;
+            --primary-dark: #111418;
+            --brand-red: #D91A2A;
+            --accent: #DFAB35;
+            --accent-hover: #B8860B;
+            --bg-body: #F8FAFC;
+            --text-muted-light: #64748B;
         }
 
         * { font-family: 'Plus Jakarta Sans', sans-serif; }

@@ -1,7 +1,10 @@
 <aside class="admin-sidebar">
-    <div class="brand">
-        <h4><i class="fas fa-mountain me-2 text-warning"></i>Kunlun</h4>
-        <small>Admin Panel</small>
+    <div class="brand d-flex align-items-center gap-3">
+        <img src="{{ asset('images/logo.png') }}" alt="Kunlun Logo" style="height: 42px; width: auto; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));">
+        <div>
+            <h4 style="color: #ffffff; font-weight: 800; font-size: 1.05rem; margin: 0; line-height: 1.1;"><span style="color: var(--accent);">KUNLUN</span> TREKS</h4>
+            <small style="color: #F87171; font-size: 0.65rem; letter-spacing: 1.8px; font-weight: 700;">EXPEDITION SUITE</small>
+        </div>
     </div>
 
     <ul class="sidebar-menu">

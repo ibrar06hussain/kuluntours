@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Page Header Banner -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <span class="section-tag">{{ $currentCategory ? 'Category Archive' : 'Expedition Catalog' }}</span>
+        <span class="section-tag" style="color: var(--brand-gold-light);">{{ $currentCategory ? 'Category Archive' : 'Expedition Catalog' }}</span>
         <h1 class="display-4 fw-bold font-heading text-white mb-2">
             {{ $currentCategory ? $currentCategory->name : 'All Treks & Expeditions' }}
         </h1>
@@ -20,12 +20,12 @@
 <!-- Category Tabs -->
 <div class="bg-white border-bottom shadow-sm">
     <div class="container">
-        <div class="d-flex overflow-auto py-2 gap-2 text-nowrap">
-            <a href="{{ route('packages.index') }}" class="btn btn-sm {{ !$currentCategory ? 'btn-dark' : 'btn-outline-secondary' }} rounded-pill px-3">
+        <div class="d-flex overflow-auto py-3 gap-2 text-nowrap">
+            <a href="{{ route('packages.index') }}" class="btn btn-sm {{ !$currentCategory ? 'btn-brand-primary' : 'btn-outline-secondary' }} rounded-pill px-3">
                 All Trips
             </a>
             @foreach($categories as $cat)
-                <a href="{{ route('packages.category', $cat) }}" class="btn btn-sm {{ ($currentCategory && $currentCategory->id == $cat->id) ? 'btn-dark' : 'btn-outline-secondary' }} rounded-pill px-3">
+                <a href="{{ route('packages.category', $cat) }}" class="btn btn-sm {{ ($currentCategory && $currentCategory->id == $cat->id) ? 'btn-brand-primary' : 'btn-outline-secondary' }} rounded-pill px-3">
                     <i class="{{ $cat->icon_class ?: 'fas fa-mountain' }} me-1"></i>{{ $cat->name }} ({{ $cat->active_packages_count ?? $cat->packages_count ?? 0 }})
                 </a>
             @endforeach

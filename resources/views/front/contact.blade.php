@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Header -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <span class="section-tag">Get in Touch</span>
+        <span class="section-tag" style="color: var(--brand-gold-light);">Get in Touch</span>
         <h1 class="display-4 fw-bold font-heading text-white mb-2">Contact Expedition Team</h1>
         <p class="text-light opacity-75 max-w-700 mx-auto">We are here to answer your questions on routes, gear, permits, and personalized Karakoram itineraries.</p>
     </div>
@@ -23,7 +23,7 @@
                     <h3 class="fw-bold font-heading mb-4">Kunlun Treks & Tours</h3>
 
                     <div class="d-flex align-items-start gap-3 mb-4">
-                        <div class="bg-warning text-dark rounded-circle p-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px;">
+                        <div class="text-dark rounded-circle p-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px; background: var(--brand-gold-gradient);">
                             <i class="fas fa-map-marker-alt fs-5"></i>
                         </div>
                         <div>
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="d-flex align-items-start gap-3 mb-4">
-                        <div class="bg-warning text-dark rounded-circle p-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px;">
+                        <div class="text-dark rounded-circle p-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px; background: var(--brand-gold-gradient);">
                             <i class="fas fa-envelope fs-5"></i>
                         </div>
                         <div>

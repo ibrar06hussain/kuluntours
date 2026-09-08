@@ -57,16 +57,16 @@
 @endif
 
 <!-- Quick Search / Filter Bar -->
-<section class="py-4 bg-dark text-white shadow-lg" style="margin-top: -30px; position: relative; z-index: 20; border-radius: 12px; margin-left: auto; margin-right: auto; max-width: 1200px;">
+<section class="py-4 shadow-lg" style="margin-top: -35px; position: relative; z-index: 20; border-radius: 14px; margin-left: auto; margin-right: auto; max-width: 1200px; background: linear-gradient(135deg, #111418 0%, #1A1E24 100%); border-top: 3px solid var(--brand-gold); border-bottom: 2px solid var(--brand-red);">
     <div class="container px-4">
         <form action="{{ route('packages.index') }}" method="GET" class="row g-3 align-items-center">
             <div class="col-lg-3 col-md-6">
-                <label class="small text-warning fw-bold mb-1"><i class="fas fa-map-marker-alt me-1"></i>Destination / Name</label>
-                <input type="text" name="search" class="form-control form-control-sm bg-secondary border-0 text-white" placeholder="e.g. K2, Concordia, Hunza">
+                <label class="small fw-bold mb-1" style="color: var(--brand-gold-light);"><i class="fas fa-map-marker-alt me-1 text-danger"></i>Destination / Region</label>
+                <input type="text" name="search" class="form-control form-control-sm border-0 text-white" style="background-color: #262B33;" placeholder="e.g. K2, Concordia, Hunza">
             </div>
             <div class="col-lg-3 col-md-6">
-                <label class="small text-warning fw-bold mb-1"><i class="fas fa-layer-group me-1"></i>Adventure Category</label>
-                <select name="category" class="form-select form-select-sm bg-secondary border-0 text-white">
+                <label class="small fw-bold mb-1" style="color: var(--brand-gold-light);"><i class="fas fa-layer-group me-1 text-danger"></i>Adventure Type</label>
+                <select name="category" class="form-select form-select-sm border-0 text-white" style="background-color: #262B33;">
                     <option value="">All Categories</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
@@ -74,8 +74,8 @@
                 </select>
             </div>
             <div class="col-lg-3 col-md-6">
-                <label class="small text-warning fw-bold mb-1"><i class="fas fa-mountain me-1"></i>Difficulty Level</label>
-                <select name="difficulty" class="form-select form-select-sm bg-secondary border-0 text-white">
+                <label class="small fw-bold mb-1" style="color: var(--brand-gold-light);"><i class="fas fa-mountain me-1 text-danger"></i>Difficulty Level</label>
+                <select name="difficulty" class="form-select form-select-sm border-0 text-white" style="background-color: #262B33;">
                     <option value="">Any Difficulty</option>
                     <option value="easy">Easy (Cultural / Leisure)</option>
                     <option value="moderate">Moderate (Alpine Treks)</option>
@@ -84,8 +84,8 @@
                 </select>
             </div>
             <div class="col-lg-3 col-md-6 d-grid pt-lg-3">
-                <button type="submit" class="btn btn-brand-accent btn-sm py-2">
-                    <i class="fas fa-search me-1"></i>Find Adventures
+                <button type="submit" class="btn btn-brand-primary btn-sm py-2">
+                    <i class="fas fa-search me-1"></i>Find Expeditions
                 </button>
             </div>
         </form>
@@ -105,18 +105,18 @@
             @foreach($categories as $cat)
                 <div class="col-lg-4 col-md-6">
                     <a href="{{ route('packages.category', $cat) }}" class="text-decoration-none">
-                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 position-relative category-card group" style="background: linear-gradient(180deg, #0C2333 0%, #163B54 100%); transition: all 0.3s;">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 position-relative category-card group" style="background: linear-gradient(145deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); transition: all 0.3s; border-bottom: 3px solid var(--brand-gold) !important;">
                             <div class="card-body p-4 text-white d-flex flex-column justify-content-between" style="min-height: 220px;">
                                 <div>
-                                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-dark rounded-circle p-3 mb-3 shadow-sm" style="width: 55px; height: 55px;">
-                                        <i class="{{ $cat->icon_class ?: 'fas fa-hiking' }} fs-4"></i>
+                                    <div class="d-inline-flex align-items-center justify-content-center text-dark rounded-circle p-3 mb-3 shadow" style="width: 55px; height: 55px; background: var(--brand-gold-gradient);">
+                                        <i class="{{ $cat->icon_class ?: 'fas fa-hiking' }} fs-4 text-dark"></i>
                                     </div>
-                                    <h4 class="text-white fw-bold mb-2">{{ $cat->name }}</h4>
+                                    <h4 class="text-white fw-bold mb-2 font-heading">{{ $cat->name }}</h4>
                                     <p class="text-light small opacity-75 mb-0">{{ Str::limit($cat->description, 85) }}</p>
                                 </div>
-                                <div class="mt-3 pt-3 border-top border-secondary d-flex justify-content-between align-items-center">
-                                    <span class="small text-warning fw-semibold">{{ $cat->activePackages->count() }} Trips Available</span>
-                                    <span class="text-white"><i class="fas fa-arrow-right"></i></span>
+                                <div class="mt-3 pt-3 border-top border-secondary-subtle d-flex justify-content-between align-items-center">
+                                    <span class="small fw-semibold" style="color: var(--brand-gold-light);">{{ $cat->activePackages->count() }} Trips Available</span>
+                                    <span class="text-warning"><i class="fas fa-arrow-right"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -229,10 +229,10 @@
 
 <!-- Why Choose Us Section (Dynamic from Database) -->
 @if(isset($sections['why_choose_us']))
-<section class="py-5 bg-dark text-white" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 50%, #8A0B14 100%); border-top: 2px solid var(--brand-gold); border-bottom: 2px solid var(--brand-gold);">
     <div class="container py-4">
         <div class="section-header text-center">
-            <span class="section-tag">{{ $sections['why_choose_us']->subtitle ?? 'The Kunlun Difference' }}</span>
+            <span class="section-tag" style="color: var(--brand-gold-light);">{{ $sections['why_choose_us']->subtitle ?? 'The Kunlun Difference' }}</span>
             <h2 class="section-title text-white">{{ $sections['why_choose_us']->title }}</h2>
         </div>
 

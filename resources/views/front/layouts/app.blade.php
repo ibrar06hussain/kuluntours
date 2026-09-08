@@ -8,10 +8,13 @@
     <title>@yield('title', $globalSettings['meta_title'] ?? 'Kunlun Treks and Tours - Premier Mountain Adventure Travel')</title>
     <meta name="description" content="@yield('meta_description', $globalSettings['meta_description'] ?? 'Explore the Karakoram, Himalayas, and Hindukush with Kunlun Treks and Tours. High-altitude trekking, peak expeditions, and cultural tours in Pakistan.')">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+
     <!-- Google Fonts: Syne & Plus Jakarta Sans for modern luxury mountaineering aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,14 +23,24 @@
 
     <style>
         :root {
-            --brand-primary: #0C2333;
-            --brand-secondary: #163B54;
-            --brand-accent: #E8A317;
-            --brand-accent-hover: #D49516;
-            --brand-gold: #F5B041;
-            --brand-dark: #07151F;
-            --brand-light: #F8FAFC;
+            /* Kunlun Brand Theme (derived from official Red & Gold logo) */
+            --brand-red: #D91A2A;
+            --brand-red-dark: #B30D1B;
+            --brand-red-deep: #8A0B14;
+            --brand-red-subtle: #FFF1F2;
+            
+            --brand-gold: #DFAB35;
+            --brand-gold-light: #F5C862;
+            --brand-gold-dark: #B8860B;
+            --brand-gold-gradient: linear-gradient(135deg, #F3A812 0%, #DFAB35 50%, #B8860B 100%);
+            --brand-red-gradient: linear-gradient(135deg, #E61C24 0%, #C8102E 60%, #8A0B14 100%);
+            
+            --brand-dark: #111418;
+            --brand-dark-surface: #1A1E24;
+            --brand-light: #FAF9F6;
             --brand-gray: #64748B;
+            --brand-border: #E2E8F0;
+            
             --font-heading: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
         }
@@ -42,7 +55,7 @@
 
         h1, h2, h3, h4, h5, h6, .font-heading {
             font-family: var(--font-heading);
-            color: var(--brand-primary);
+            color: var(--brand-dark);
             font-weight: 700;
             letter-spacing: -0.02em;
         }
@@ -53,7 +66,7 @@
             color: #94A3B8;
             font-size: 0.8rem;
             padding: 7px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 2px solid var(--brand-gold);
         }
 
         .top-bar a {
@@ -63,7 +76,7 @@
         }
 
         .top-bar a:hover {
-            color: var(--brand-accent);
+            color: var(--brand-gold);
         }
 
         /* Main Navbar */
@@ -71,100 +84,127 @@
             background: #ffffff;
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            padding: 14px 0;
+            padding: 10px 0;
         }
 
         .navbar-main.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            padding: 8px 0;
+            box-shadow: 0 6px 25px rgba(217, 26, 42, 0.08);
+            border-bottom: 1px solid rgba(223, 171, 53, 0.2);
         }
 
-        .navbar-brand {
+        .navbar-brand-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.2s;
+        }
+
+        .navbar-brand:hover .navbar-brand-logo {
+            transform: scale(1.03);
+        }
+
+        .navbar-brand-text {
             font-family: var(--font-heading);
             font-weight: 800;
-            font-size: 1.45rem;
-            color: var(--brand-primary);
+            font-size: 1.3rem;
+            line-height: 1.1;
+            color: var(--brand-red);
             letter-spacing: -0.5px;
         }
 
-        .navbar-brand span {
-            color: var(--brand-accent);
+        .navbar-brand-text span {
+            color: var(--brand-gold-dark);
         }
 
         .nav-link {
             font-weight: 600;
-            color: var(--brand-primary) !important;
+            color: var(--brand-dark) !important;
             font-size: 0.92rem;
             padding: 8px 16px !important;
             text-transform: capitalize;
             transition: all 0.2s;
+            position: relative;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--brand-accent) !important;
+            color: var(--brand-red) !important;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: var(--brand-red);
+            border-radius: 2px;
         }
 
         .dropdown-menu {
-            border: none;
+            border: 1px solid var(--brand-border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             border-radius: 12px;
             padding: 10px;
-            min-width: 220px;
+            min-width: 230px;
         }
 
         .dropdown-item {
             font-weight: 500;
             font-size: 0.88rem;
-            padding: 8px 16px;
+            padding: 9px 16px;
             border-radius: 8px;
-            color: var(--brand-primary);
+            color: var(--brand-dark);
             transition: all 0.2s;
         }
 
         .dropdown-item:hover {
-            background-color: #F1F5F9;
-            color: var(--brand-accent);
+            background-color: var(--brand-red-subtle);
+            color: var(--brand-red);
             transform: translateX(4px);
         }
 
         /* Buttons */
         .btn-brand-accent {
-            background-color: var(--brand-accent);
-            color: #07151F;
+            background: var(--brand-gold-gradient);
+            color: #111418;
             font-weight: 700;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(223, 171, 53, 0.3);
         }
 
         .btn-brand-accent:hover {
-            background-color: var(--brand-accent-hover);
-            color: #07151F;
+            background: linear-gradient(135deg, #DFAB35 0%, #B8860B 100%);
+            color: #111418;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(232, 163, 23, 0.35);
+            box-shadow: 0 8px 20px rgba(223, 171, 53, 0.45);
         }
 
         .btn-brand-primary {
-            background-color: var(--brand-primary);
+            background: var(--brand-red-gradient);
             color: #ffffff;
             font-weight: 600;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(217, 26, 42, 0.25);
         }
 
         .btn-brand-primary:hover {
-            background-color: var(--brand-secondary);
+            background: linear-gradient(135deg, #B30D1B 0%, #8A0B14 100%);
             color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(12, 35, 51, 0.3);
+            box-shadow: 0 8px 20px rgba(217, 26, 42, 0.4);
         }
 
         .btn-outline-brand {
-            border: 2px solid var(--brand-primary);
-            color: var(--brand-primary);
+            border: 2px solid var(--brand-red);
+            color: var(--brand-red);
             font-weight: 600;
             padding: 9px 22px;
             border-radius: 8px;
@@ -172,7 +212,7 @@
         }
 
         .btn-outline-brand:hover {
-            background-color: var(--brand-primary);
+            background-color: var(--brand-red);
             color: #ffffff;
         }
 
@@ -193,7 +233,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(7,21,31,0.3) 0%, rgba(7,21,31,0.75) 100%);
+            background: linear-gradient(180deg, rgba(17,20,24,0.35) 0%, rgba(17,20,24,0.8) 100%);
             display: flex;
             align-items: center;
         }
@@ -203,15 +243,15 @@
             font-weight: 800;
             color: #ffffff;
             line-height: 1.15;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: #E2E8F0;
+            color: #F8FAFC;
             font-weight: 400;
             margin-bottom: 2rem;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 6px rgba(0,0,0,0.6);
         }
 
         @media (max-width: 768px) {
@@ -231,7 +271,7 @@
             background: #ffffff;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--brand-border);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: all 0.35s ease;
             display: flex;
@@ -241,8 +281,8 @@
 
         .package-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(12, 35, 51, 0.12);
-            border-color: #CBD5E1;
+            box-shadow: 0 20px 35px rgba(217, 26, 42, 0.12);
+            border-color: rgba(223, 171, 53, 0.4);
         }
 
         .package-card-img-wrapper {
@@ -266,13 +306,14 @@
             position: absolute;
             top: 14px;
             left: 14px;
-            background: rgba(7, 21, 31, 0.75);
+            background: rgba(17, 20, 24, 0.85);
             backdrop-filter: blur(6px);
-            color: #fff;
+            border: 1px solid rgba(223, 171, 53, 0.4);
+            color: var(--brand-gold-light);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
 
@@ -280,13 +321,14 @@
             position: absolute;
             bottom: 14px;
             right: 14px;
-            background: var(--brand-accent);
-            color: #07151F;
+            background: var(--brand-gold-gradient);
+            color: #111418;
             padding: 6px 14px;
             border-radius: 8px;
             font-weight: 800;
             font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
         .package-card-body {
@@ -305,7 +347,7 @@
         }
 
         .package-meta-item i {
-            color: var(--brand-accent);
+            color: var(--brand-red);
         }
 
         /* Section Titles */
@@ -314,11 +356,11 @@
         }
 
         .section-tag {
-            color: var(--brand-accent);
+            color: var(--brand-red);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 8px;
             display: inline-block;
         }
@@ -326,7 +368,7 @@
         .section-title {
             font-size: 2.35rem;
             font-weight: 800;
-            color: var(--brand-primary);
+            color: var(--brand-dark);
         }
 
         /* Floating WhatsApp Button */
@@ -360,7 +402,18 @@
             color: #94A3B8;
             padding-top: 70px;
             padding-bottom: 30px;
-            border-top: 3px solid var(--brand-accent);
+            border-top: 4px solid var(--brand-red);
+            position: relative;
+        }
+
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--brand-gold-gradient);
         }
 
         .footer-heading {
@@ -378,8 +431,9 @@
             bottom: 0;
             left: 0;
             width: 35px;
-            height: 2px;
-            background: var(--brand-accent);
+            height: 3px;
+            background: var(--brand-gold);
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -403,7 +457,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--brand-accent);
+            color: var(--brand-gold);
             transform: translateX(4px);
         }
 
@@ -440,20 +494,20 @@
         </div>
     </div>
 
-    <!-- Main Navigation Bar -->
+    <!-- Main Navigation Bar with Kunlun Logo -->
     <nav class="navbar navbar-expand-lg navbar-main sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-                <i class="fas fa-mountain text-warning me-2 fs-3"></i>
-                <div>
-                    <span class="text-dark">KUNLUN</span> <span class="text-warning">TREKS</span>
-                    <div style="font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: #64748B; font-family: var(--font-body); font-weight: 700; margin-top: -4px;">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Kunlun Treks and Tours" class="navbar-brand-logo">
+                <div class="d-flex flex-column">
+                    <span class="navbar-brand-text">KUNLUN <span>TREKS</span></span>
+                    <span style="font-size: 0.6rem; letter-spacing: 1.8px; text-transform: uppercase; color: #111418; font-weight: 800; margin-top: -3px;">
                         AND TOURS PAKISTAN
-                    </div>
+                    </span>
                 </div>
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-dismiss="collapse" data-bs-target="#navbarKunlun">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarKunlun">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -469,12 +523,12 @@
                             Adventures & Treks
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fw-bold text-primary" href="{{ route('packages.index') }}"><i class="fas fa-th-large me-2 text-warning"></i>All Adventures</a></li>
+                            <li><a class="dropdown-item fw-bold text-danger" href="{{ route('packages.index') }}"><i class="fas fa-th-large me-2 text-warning"></i>All Adventures</a></li>
                             <li><hr class="dropdown-divider"></li>
                             @foreach($globalMenuCategories as $cat)
                                 <li>
                                     <a class="dropdown-item" href="{{ route('packages.category', $cat) }}">
-                                        <i class="{{ $cat->icon_class ?: 'fas fa-mountain' }} me-2 text-muted" style="width: 16px;"></i>{{ $cat->name }}
+                                        <i class="{{ $cat->icon_class ?: 'fas fa-mountain' }} me-2 text-danger" style="width: 16px;"></i>{{ $cat->name }}
                                     </a>
                                 </li>
                             @endforeach
@@ -502,7 +556,7 @@
                     </li>
 
                     <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                        <a href="{{ route('contact') }}" class="btn btn-brand-accent btn-sm shadow-sm">
+                        <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-sm shadow-sm">
                             <i class="fas fa-paper-plane me-1"></i>Book Trek
                         </a>
                     </li>
@@ -538,9 +592,12 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-mountain text-warning me-2 fs-2"></i>
-                        <h4 class="text-white mb-0 font-heading">KUNLUN TREKS</h4>
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="{{ asset('images/logo.png') }}" alt="Kunlun Treks" style="height: 65px; width: auto;" class="bg-white p-1 rounded-2">
+                        <div>
+                            <h4 class="text-white mb-0 font-heading">KUNLUN TREKS</h4>
+                            <small class="text-warning fw-bold text-uppercase" style="letter-spacing: 1.5px; font-size: 0.68rem;">AND TOURS PAKISTAN</small>
+                        </div>
                     </div>
                     <p class="small text-muted mb-4">
                         Pakistan’s premier high-altitude mountaineering and wilderness trekking operator based in Skardu. Over 20 years guiding international adventurers across K2, Concordia, Broad Peak, and the Karakoram.
@@ -578,13 +635,13 @@
 
                 <div class="col-lg-4 col-md-6">
                     <h5 class="footer-heading">Expedition Headquarters</h5>
-                    <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-warning me-2"></i>{{ $globalSettings['address'] ?? 'Skardu, Gilgit-Baltistan, Pakistan' }}</p>
-                    <p class="small text-muted mb-2"><i class="fas fa-envelope text-warning me-2"></i>{{ $globalSettings['email'] ?? 'info@kunluntreks.com' }}</p>
+                    <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i>{{ $globalSettings['address'] ?? 'Skardu, Gilgit-Baltistan, Pakistan' }}</p>
+                    <p class="small text-muted mb-2"><i class="fas fa-envelope text-danger me-2"></i>{{ $globalSettings['email'] ?? 'info@kunluntreks.com' }}</p>
                     @if(!empty($globalSettings['phone']))
-                        <p class="small text-muted mb-2"><i class="fas fa-phone text-warning me-2"></i>{{ $globalSettings['phone'] }}</p>
+                        <p class="small text-muted mb-2"><i class="fas fa-phone text-danger me-2"></i>{{ $globalSettings['phone'] }}</p>
                     @endif
                     @if(!empty($globalSettings['whatsapp_number']))
-                        <p class="small text-muted mb-3"><i class="fab fa-whatsapp text-warning me-2"></i>{{ $globalSettings['whatsapp_number'] }}</p>
+                        <p class="small text-muted mb-3"><i class="fab fa-whatsapp text-success me-2"></i>{{ $globalSettings['whatsapp_number'] }}</p>
                     @endif
 
                     <div class="p-3 rounded bg-dark border border-secondary mt-3">

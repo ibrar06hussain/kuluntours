@@ -5,9 +5,9 @@
 
 @section('content')
 <!-- Header -->
-<section class="py-5 bg-dark text-white position-relative" style="background: linear-gradient(180deg, #07151F 0%, #0C2333 100%);">
+<section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 60%, #8A0B14 100%); border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4 text-center">
-        <div class="badge bg-warning text-dark fw-bold mb-3"><i class="fas fa-newspaper me-1"></i>Expedition Journal</div>
+        <div class="badge text-dark fw-bold mb-3" style="background: var(--brand-gold-gradient);"><i class="fas fa-newspaper me-1"></i>Expedition Journal</div>
         <h1 class="display-5 fw-bold font-heading text-white max-w-900 mx-auto mb-3">{{ $post->title }}</h1>
         <div class="text-light opacity-75 small">
             <span><i class="fas fa-user text-warning me-1"></i>By {{ $post->author->name ?? 'Kunlun Expedition Team' }}</span> •

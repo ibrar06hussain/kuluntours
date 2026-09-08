@@ -5,12 +5,12 @@
 
 @section('content')
 <!-- Hero Header -->
-<section class="position-relative text-white py-5" style="background: linear-gradient(180deg, rgba(7,21,31,0.65) 0%, rgba(12,35,51,0.92) 100%), url('{{ Str::startsWith($package->featured_image, 'http') ? $package->featured_image : asset('uploads/' . $package->featured_image) }}') center/cover no-repeat; min-height: 420px; display: flex; align-items: center;">
+<section class="position-relative text-white py-5" style="background: linear-gradient(180deg, rgba(17,20,24,0.7) 0%, rgba(138,11,20,0.85) 100%), url('{{ Str::startsWith($package->featured_image, 'http') ? $package->featured_image : asset('uploads/' . $package->featured_image) }}') center/cover no-repeat; min-height: 420px; display: flex; align-items: center; border-bottom: 3px solid var(--brand-gold);">
     <div class="container py-4">
         <div class="row">
             <div class="col-lg-8">
                 <div class="d-flex flex-wrap gap-2 mb-3">
-                    <span class="badge bg-warning text-dark fw-bold px-3 py-2"><i class="fas fa-mountain me-1"></i>{{ $package->category->name ?? 'Trek' }}</span>
+                    <span class="badge fw-bold px-3 py-2 text-dark" style="background: var(--brand-gold-gradient);"><i class="fas fa-mountain me-1"></i>{{ $package->category->name ?? 'Trek' }}</span>
                     @if($package->difficulty_level)
                         <span class="badge bg-light text-dark fw-semibold px-3 py-2 text-capitalize"><i class="fas fa-tachometer-alt me-1"></i>{{ $package->difficulty_level }}</span>
                     @endif
@@ -25,20 +25,20 @@
                 @endif
 
                 <div class="d-flex flex-wrap gap-4 text-light small">
-                    <span><i class="fas fa-map-marker-alt text-warning me-2"></i><strong>Start / End:</strong> {{ $package->starting_point ?: 'Skardu' }} / {{ $package->ending_point ?: 'Islamabad' }}</span>
-                    <span><i class="fas fa-clock text-warning me-2"></i><strong>Duration:</strong> {{ $package->duration_days }} Days</span>
+                    <span><i class="fas fa-map-marker-alt text-danger me-2"></i><strong>Start / End:</strong> {{ $package->starting_point ?: 'Skardu' }} / {{ $package->ending_point ?: 'Islamabad' }}</span>
+                    <span><i class="fas fa-clock text-danger me-2"></i><strong>Duration:</strong> {{ $package->duration_days }} Days</span>
                     @if($package->max_altitude)
-                        <span><i class="fas fa-cloud-upload-alt text-warning me-2"></i><strong>Max Alt:</strong> {{ $package->max_altitude }}</span>
+                        <span><i class="fas fa-cloud-upload-alt text-danger me-2"></i><strong>Max Alt:</strong> {{ $package->max_altitude }}</span>
                     @endif
                 </div>
             </div>
 
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0 align-self-center">
-                <div class="d-inline-block bg-dark bg-opacity-75 p-4 rounded-4 border border-secondary shadow-lg text-start">
+                <div class="d-inline-block p-4 rounded-4 shadow-lg text-start" style="background: rgba(17,20,24,0.92) !important; border: 1px solid rgba(223, 171, 53, 0.4) !important;">
                     <span class="small text-muted text-uppercase fw-bold">Package Price</span>
-                    <div class="display-6 fw-bold text-warning mb-1">${{ number_format($package->price, 0) }}</div>
+                    <div class="display-6 fw-bold mb-1" style="color: var(--brand-gold);">${{ number_format($package->price, 0) }}</div>
                     <small class="text-light opacity-75 d-block mb-3">{{ $package->price_note ?: 'Per person (All inclusive)' }}</small>
-                    <a href="#bookingSection" class="btn btn-brand-accent w-100 fw-bold">
+                    <a href="#bookingSection" class="btn btn-brand-primary w-100 fw-bold">
                         <i class="fas fa-calendar-check me-2"></i>Inquire / Book Now
                     </a>
                 </div>
