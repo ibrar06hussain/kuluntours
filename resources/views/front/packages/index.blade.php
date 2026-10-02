@@ -97,7 +97,7 @@
                                     <img src="{{ Str::startsWith($pkg->featured_image, 'http') ? $pkg->featured_image : asset('uploads/' . $pkg->featured_image) }}" alt="{{ $pkg->title }}">
                                     <span class="package-badge-category">{{ $pkg->category->name ?? 'Adventure' }}</span>
                                     @if($pkg->price)
-                                        <span class="package-badge-price">${{ number_format($pkg->price, 0) }}</span>
+                                        <span class="package-badge-price">PKR {{ number_format($pkg->price, 0) }}</span>
                                     @endif
                                 </div>
                                 <div class="package-card-body">

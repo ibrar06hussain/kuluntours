@@ -17,10 +17,14 @@ class Page extends Model
         'meta_title',
         'meta_description',
         'is_active',
+        'show_in_menu',
+        'show_in_footer',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'show_in_menu' => 'boolean',
+        'show_in_footer' => 'boolean',
     ];
 
     public function scopeActive($query)
@@ -33,3 +37,4 @@ class Page extends Model
         return 'slug';
     }
 }
+

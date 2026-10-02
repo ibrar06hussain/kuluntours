@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <textarea name="itineraries[{{ $idx }}][description]" rows="2" class="form-control form-control-sm" placeholder="Activities and details...">{{ $itn->description }}</textarea>
+                                    <textarea name="itineraries[{{ $idx }}][description]" class="form-control summernote-itinerary" placeholder="Activities and details...">{{ $itn->description }}</textarea>
                                 </div>
                             </div>
                         @empty
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <textarea name="itineraries[0][description]" rows="2" class="form-control form-control-sm" placeholder="Activities and details..."></textarea>
+                                    <textarea name="itineraries[0][description]" class="form-control summernote-itinerary" placeholder="Activities and details..."></textarea>
                                 </div>
                             </div>
                         @endforelse
@@ -220,9 +220,9 @@
                 <div class="card-header">Trip Specifications</div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Price (USD) <span class="text-danger">*</span></label>
+                        <label class="form-label fw-bold">Price (PKR) <span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text">PKR</span>
                             <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $package->price) }}" required>
                         </div>
                     </div>
@@ -332,6 +332,30 @@
     let inclusionIndex = {{ count($package->inclusions) ?: 1 }};
     let exclusionIndex = {{ count($package->exclusions) ?: 1 }};
 
+    function initItinerarySummernote(selector) {
+        $(selector).summernote({
+            height: 150,
+            toolbar: [
+                ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'table', 'hr']],
+                ['view', ['fullscreen', 'codeview']]
+            ],
+            callbacks: {
+                onImageUpload: function(files) {
+                    if (typeof uploadEditorImage === 'function') {
+                        uploadEditorImage(files[0], $(this));
+                    }
+                }
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        initItinerarySummernote('.summernote-itinerary');
+    });
+
     // Add Day to Itinerary
     $('#addItineraryBtn').on('click', function() {
         let dayNum = $('#itineraryContainer .itinerary-row').length + 1;
@@ -350,17 +374,21 @@
                     </div>
                 </div>
                 <div>
-                    <textarea name="itineraries[${itineraryIndex}][description]" rows="2" class="form-control form-control-sm" placeholder="Activities and details..."></textarea>
+                    <textarea name="itineraries[${itineraryIndex}][description]" class="form-control summernote-itinerary" placeholder="Activities and details..."></textarea>
                 </div>
             </div>
         `;
-        $('#itineraryContainer').append(html);
+        let $newRow = $(html);
+        $('#itineraryContainer').append($newRow);
+        initItinerarySummernote($newRow.find('.summernote-itinerary'));
         itineraryIndex++;
     });
 
     $(document).on('click', '.remove-itinerary-btn', function() {
         if ($('#itineraryContainer .itinerary-row').length > 1) {
-            $(this).closest('.itinerary-row').remove();
+            let $row = $(this).closest('.itinerary-row');
+            $row.find('.summernote-itinerary').summernote('destroy');
+            $row.remove();
         } else {
             alert('At least one itinerary day should remain.');
         }

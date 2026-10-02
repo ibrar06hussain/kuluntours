@@ -59,6 +59,20 @@
                         </div>
                     </div>
 
+                                        <div class="mb-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="show_in_menu" id="showInMenu" value="1" {{ old('show_in_menu') ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold" for="showInMenu">Show in Header Menu</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="show_in_footer" id="showInFooter" value="1" {{ old('show_in_footer') ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold" for="showInFooter">Show in Footer Links</label>
+                        </div>
+                    </div>
+
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{ route('admin.pages.index') }}" class="btn btn-light">Cancel</a>
                         <button type="submit" class="btn btn-primary px-4">
@@ -71,3 +85,4 @@
     </div>
 </div>
 @endsection
+

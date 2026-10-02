@@ -24,7 +24,7 @@
                         <i class="fas fa-mountain fa-2x me-3 text-primary"></i>
                         <div>
                             <div class="fw-bold fs-6">Interested Package: {{ $inquiry->package->title }}</div>
-                            <div class="small text-muted">{{ $inquiry->package->duration_days }} Days • Price: ${{ number_format($inquiry->package->price, 0) }}</div>
+                            <div class="small text-muted">{{ $inquiry->package->duration_days }} Days • Price: PKR {{ number_format($inquiry->package->price, 0) }}</div>
                         </div>
                         <a href="{{ route('packages.show', $inquiry->package) }}" target="_blank" class="btn btn-sm btn-primary ms-auto">
                             View Package

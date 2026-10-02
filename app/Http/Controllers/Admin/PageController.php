@@ -38,6 +38,8 @@ class PageController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'is_active' => 'nullable|boolean',
+            'show_in_menu' => 'nullable|boolean',
+            'show_in_footer' => 'nullable|boolean',
         ]);
 
         $validated['slug'] = $validated['slug'] ? Str::slug($validated['slug']) : Str::slug($validated['title']);
@@ -67,6 +69,8 @@ class PageController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'is_active' => 'nullable|boolean',
+            'show_in_menu' => 'nullable|boolean',
+            'show_in_footer' => 'nullable|boolean',
         ]);
 
         $validated['slug'] = $validated['slug'] ? Str::slug($validated['slug']) : Str::slug($validated['title']);
@@ -94,3 +98,4 @@ class PageController extends Controller
         return redirect()->route('admin.pages.index')->with('success', 'Page deleted successfully.');
     }
 }
+

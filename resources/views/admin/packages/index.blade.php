@@ -82,7 +82,7 @@
                             <small class="text-muted">{{ $pkg->max_altitude ?: '' }}</small>
                         </td>
                         <td>
-                            <span class="fw-bold text-success">${{ number_format($pkg->price, 0) }}</span>
+                            <span class="fw-bold text-success">PKR {{ number_format($pkg->price, 0) }}</span>
                             @if($pkg->price_note)<div class="small text-muted" style="font-size: 0.75rem;">{{ $pkg->price_note }}</div>@endif
                         </td>
                         <td>

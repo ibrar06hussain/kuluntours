@@ -399,8 +399,8 @@
 
         /* Footer */
         .site-footer {
-            background-color: var(--brand-dark);
-            color: #94A3B8;
+            background-color: #1e2633;
+            color: #d1d5db;
             padding-top: 70px;
             padding-bottom: 30px;
             border-top: 4px solid var(--brand-red);
@@ -415,6 +415,10 @@
             right: 0;
             height: 3px;
             background: var(--brand-gold-gradient);
+        }
+
+        .site-footer .text-muted {
+            color: #d1d5db !important;
         }
 
         .footer-heading {
@@ -448,13 +452,13 @@
         }
 
         .footer-links a {
-            color: #94A3B8;
+            color: #e5e7eb;
             text-decoration: none;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         .footer-links a:hover {
@@ -465,8 +469,23 @@
         .footer-bottom {
             margin-top: 50px;
             padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.88rem;
+            color: #d1d5db;
+        }
+
+        .footer-bottom a {
+            color: #e5e7eb !important;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--brand-gold) !important;
+        }
+
+        .site-footer .bg-dark {
+            background-color: #161c26 !important;
+            border-color: rgba(255,255,255,0.15) !important;
         }
     </style>
 
@@ -540,9 +559,15 @@
                         <a class="nav-link {{ request()->is('page/about-us*') ? 'active' : '' }}" href="{{ route('pages.show', 'about-us') }}">About Us</a>
                     </li>
 
-                    <li class="nav-item">
+                                        <li class="nav-item">
                         <a class="nav-link {{ request()->is('page/visa-information*') ? 'active' : '' }}" href="{{ route('pages.show', 'visa-information') }}">Visa & Info</a>
                     </li>
+                    
+                    @foreach($menuPages as $page)
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('page/' . $page->slug . '*') ? 'active' : '' }}" href="{{ route('pages.show', $page->slug) }}">{{ $page->title }}</a>
+                    </li>
+                    @endforeach
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('faqs*') ? 'active' : '' }}" href="{{ route('faqs.index') }}">FAQs</a>
@@ -623,10 +648,13 @@
                 </div>
 
                 <div class="col-lg-2 col-md-6 col-6">
-                    <h5 class="footer-heading">Quick Links</h5>
+                                        <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
                         <li><a href="{{ route('pages.show', 'about-us') }}">About Kunlun</a></li>
                         <li><a href="{{ route('pages.show', 'visa-information') }}">Pakistan e-Visa</a></li>
+                        @foreach($footerPages as $page)
+                        <li><a href="{{ route('pages.show', $page->slug) }}">{{ $page->title }}</a></li>
+                        @endforeach
                         <li><a href="{{ route('faqs.index') }}">Trekker FAQs</a></li>
                         <li><a href="{{ route('blog.index') }}">Mountaineering Blog</a></li>
                         <li><a href="{{ route('pages.show', 'terms-and-conditions') }}">Terms & Conditions</a></li>
@@ -691,3 +719,4 @@
     @stack('scripts')
 </body>
 </html>
+

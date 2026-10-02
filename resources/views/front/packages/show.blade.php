@@ -36,7 +36,7 @@
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0 align-self-center">
                 <div class="d-inline-block p-4 rounded-4 shadow-lg text-start" style="background: rgba(17,20,24,0.92) !important; border: 1px solid rgba(223, 171, 53, 0.4) !important;">
                     <span class="small text-muted text-uppercase fw-bold">Package Price</span>
-                    <div class="display-6 fw-bold mb-1" style="color: var(--brand-gold);">${{ number_format($package->price, 0) }}</div>
+                    <div class="display-6 fw-bold mb-1" style="color: var(--brand-gold);">PKR {{ number_format($package->price, 0) }}</div>
                     <small class="text-light opacity-75 d-block mb-3">{{ $package->price_note ?: 'Per person (All inclusive)' }}</small>
                     <a href="#bookingSection" class="btn btn-brand-primary w-100 fw-bold">
                         <i class="fas fa-calendar-check me-2"></i>Inquire / Book Now
@@ -138,7 +138,7 @@
                                     </h2>
                                     <div id="collapse{{ $idx }}" class="accordion-collapse collapse {{ $idx == 0 ? 'show' : '' }}" data-bs-parent="#itineraryAccordion">
                                         <div class="accordion-body text-secondary lh-base">
-                                            {{ $itn->description }}
+                                            {!! $itn->description !!}
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +287,7 @@
                             <img src="{{ Str::startsWith($relPkg->featured_image, 'http') ? $relPkg->featured_image : asset('uploads/' . $relPkg->featured_image) }}" alt="{{ $relPkg->title }}">
                             <span class="package-badge-category">{{ $relPkg->category->name ?? 'Trek' }}</span>
                             @if($relPkg->price)
-                                <span class="package-badge-price">${{ number_format($relPkg->price, 0) }}</span>
+                                <span class="package-badge-price">PKR {{ number_format($relPkg->price, 0) }}</span>
                             @endif
                         </div>
                         <div class="package-card-body">

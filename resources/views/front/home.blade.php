@@ -148,7 +148,7 @@
                             <img src="{{ Str::startsWith($pkg->featured_image, 'http') ? $pkg->featured_image : asset('uploads/' . $pkg->featured_image) }}" alt="{{ $pkg->title }}">
                             <span class="package-badge-category">{{ $pkg->category->name ?? 'Trek' }}</span>
                             @if($pkg->price)
-                                <span class="package-badge-price">${{ number_format($pkg->price, 0) }}</span>
+                                <span class="package-badge-price">PKR {{ number_format($pkg->price, 0) }}</span>
                             @endif
                         </div>
                         <div class="package-card-body">
@@ -229,7 +229,7 @@
 
 <!-- Why Choose Us Section (Dynamic from Database) -->
 @if(isset($sections['why_choose_us']))
-<section class="py-5 text-white" style="background: linear-gradient(135deg, #111418 0%, #1A1E24 50%, #8A0B14 100%); border-top: 2px solid var(--brand-gold); border-bottom: 2px solid var(--brand-gold);">
+<section class="why-choose-us-section py-5 text-white" style="background: linear-gradient(135deg, #1e2633 0%, #252e3e 50%, #4a151b 100%); border-top: 2px solid var(--brand-gold); border-bottom: 2px solid var(--brand-gold);">
     <div class="container py-4">
         <div class="section-header text-center">
             <span class="section-tag" style="color: var(--brand-gold-light);">{{ $sections['why_choose_us']->subtitle ?? 'The Kunlun Difference' }}</span>
@@ -241,6 +241,16 @@
         </div>
     </div>
 </section>
+<style>
+    .why-choose-us-section .text-muted,
+    .why-choose-us-section p {
+        color: #d1d5db !important;
+    }
+    .why-choose-us-section h5 {
+        color: #ffffff !important;
+        font-weight: 700;
+    }
+</style>
 @endif
 
 <!-- Fixed Departures Highlight -->
@@ -269,7 +279,7 @@
                             </h5>
                             <div class="small text-muted mb-3">
                                 <span><i class="fas fa-clock text-warning me-1"></i>{{ $pkg->duration_days }} Days</span> •
-                                <span><i class="fas fa-tag text-success me-1"></i>${{ number_format($pkg->price, 0) }}</span> •
+                                <span><i class="fas fa-tag text-success me-1"></i>PKR {{ number_format($pkg->price, 0) }}</span> •
                                 <span><i class="fas fa-users text-primary me-1"></i>{{ $pkg->group_size ?: 'Small Group' }}</span>
                             </div>
                             <a href="{{ route('packages.show', $pkg) }}" class="btn btn-sm btn-brand-accent">

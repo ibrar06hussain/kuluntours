@@ -24,10 +24,10 @@ class HomepageSectionSeeder extends Seeder
                 'title' => 'Why Choose Kunlun Treks & Tours',
                 'subtitle' => 'Experience, Safety & Local Mastery',
                 'description' => '<div class="row g-4">
-                    <div class="col-md-3 text-center"><i class="fas fa-shield-alt fa-3x text-warning mb-3"></i><h5>100% Safety Track Record</h5><p class="text-muted small">Certified high-altitude medical equipment, satellite comms, and rescue protocols on every trek.</p></div>
-                    <div class="col-md-3 text-center"><i class="fas fa-user-tie fa-3x text-warning mb-3"></i><h5>Veteran Local Guides</h5><p class="text-muted small">Balti and Hunzai mountaineers who were born in these peaks and know every hidden pass.</p></div>
-                    <div class="col-md-3 text-center"><i class="fas fa-leaf fa-3x text-warning mb-3"></i><h5>Eco-Friendly & Sustainable</h5><p class="text-muted small">Strict leave-no-trace ethics, fair wages for porters, and community-support initiatives.</p></div>
-                    <div class="col-md-3 text-center"><i class="fas fa-star fa-3x text-warning mb-3"></i><h5>Bespoke & Tailor-Made</h5><p class="text-muted small">Customized itineraries designed around your fitness level, schedule, and climbing goals.</p></div>
+                    <div class="col-md-3 text-center"><i class="fas fa-shield-alt fa-3x text-warning mb-3"></i><h5 class="text-white fw-bold">100% Safety Track Record</h5><p class="text-light opacity-90 small">Certified high-altitude medical equipment, satellite comms, and rescue protocols on every trek.</p></div>
+                    <div class="col-md-3 text-center"><i class="fas fa-user-tie fa-3x text-warning mb-3"></i><h5 class="text-white fw-bold">Veteran Local Guides</h5><p class="text-light opacity-90 small">Balti and Hunzai mountaineers who were born in these peaks and know every hidden pass.</p></div>
+                    <div class="col-md-3 text-center"><i class="fas fa-leaf fa-3x text-warning mb-3"></i><h5 class="text-white fw-bold">Eco-Friendly & Sustainable</h5><p class="text-light opacity-90 small">Strict leave-no-trace ethics, fair wages for porters, and community-support initiatives.</p></div>
+                    <div class="col-md-3 text-center"><i class="fas fa-star fa-3x text-warning mb-3"></i><h5 class="text-white fw-bold">Bespoke & Tailor-Made</h5><p class="text-light opacity-90 small">Customized itineraries designed around your fitness level, schedule, and climbing goals.</p></div>
                 </div>',
                 'image' => null,
                 'sort_order' => 2,
